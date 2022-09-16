@@ -42,17 +42,41 @@ describe('simple database', () => {
   it('getall() should return all objects in directory', async () => {
     const cats = [
       {
+        name: 'Eddna',
+        age: 2,
+      },
+      {
         name: 'Ghoul',
         age: 6,
       },
       {
         name: 'Ralph',
-        age: 2,
+        age: 8,
+      },
+    ];
+
+    const db = new SimpleDb(TEST_DIR);
+
+    cats.forEach(async object => {
+      await db.save(object);
+    });
+
+    expect(await db.getAll()).toEqual([
+      {
+        name: expect.any(String),
+        age: expect.any(Number),
+        id: expect.any(String),
       },
       {
-        name: 'Eddna',
-        age: 2,
+        name: expect.any(String),
+        age: expect.any(Number),
+        id: expect.any(String),
+      },
+      {
+        name: expect.any(String),
+        age: expect.any(Number),
+        id: expect.any(String),
       }
-    ]
-  })
+    ]);
+  });
 });
