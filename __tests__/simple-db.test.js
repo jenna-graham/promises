@@ -15,7 +15,7 @@ describe('simple database', () => {
     await fs.mkdir(TEST_DIR, { recursive: true });
   });
 
-  it.only('GET:id returns object by id', async () => {
+  it('GET:id returns object by id', async () => {
     const cats = {
       name: 'Momo',
       age: 2,
