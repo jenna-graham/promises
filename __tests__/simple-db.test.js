@@ -15,7 +15,7 @@ describe('simple database', () => {
     await fs.mkdir(TEST_DIR, { recursive: true });
   });
 
-  it('GET:id returns object by id', async () => {
+  it.only('GET:id returns object by id', async () => {
     const cats = {
       name: 'Momo',
       age: 2,
@@ -30,7 +30,7 @@ describe('simple database', () => {
   it('save should save an object', async () => {
     const cats = {
       name: 'Stu',
-      age:  1,
+      age: 1,
     };
     const db = new SimpleDb(TEST_DIR);
 
@@ -57,7 +57,7 @@ describe('simple database', () => {
 
     const db = new SimpleDb(TEST_DIR);
 
-    cats.forEach(async object => {
+    cats.forEach(async (object) => {
       await db.save(object);
     });
 
@@ -76,7 +76,7 @@ describe('simple database', () => {
         name: expect.any(String),
         age: expect.any(Number),
         id: expect.any(String),
-      }
+      },
     ]);
   });
 });
