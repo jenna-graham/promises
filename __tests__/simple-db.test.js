@@ -38,4 +38,21 @@ describe('simple database', () => {
 
     expect(await db.get(obj.id)).toEqual({ ...cats, id: expect.any(String) });
   });
+
+  it('getall() should return all objects in directory', async () => {
+    const cats = [
+      {
+        name: 'Ghoul',
+        age: 6,
+      },
+      {
+        name: 'Ralph',
+        age: 2,
+      },
+      {
+        name: 'Eddna',
+        age: 2,
+      }
+    ]
+  })
 });
