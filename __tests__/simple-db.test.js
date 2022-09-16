@@ -56,27 +56,36 @@ describe('simple database', () => {
     ];
 
     const db = new SimpleDb(TEST_DIR);
+    return Promise.all(
+      cats.map(async (object) => {
+        return await db.save(object);
+      })
+    )
+      .then(() => {
+        return db.getAll();
+      })
+      .then((allFiles) => {
+        // cats.forEach(async (object) => {
+        //   await db.save(object);
+        // });
 
-    cats.forEach(async (object) => {
-      await db.save(object);
-    });
-
-    expect(await db.getAll()).toEqual([
-      {
-        name: expect.any(String),
-        age: expect.any(Number),
-        id: expect.any(String),
-      },
-      {
-        name: expect.any(String),
-        age: expect.any(Number),
-        id: expect.any(String),
-      },
-      {
-        name: expect.any(String),
-        age: expect.any(Number),
-        id: expect.any(String),
-      },
-    ]);
+        expect(allFiles).toEqual([
+          {
+            name: expect.any(String),
+            age: expect.any(Number),
+            id: expect.any(String),
+          },
+          {
+            name: expect.any(String),
+            age: expect.any(Number),
+            id: expect.any(String),
+          },
+          {
+            name: expect.any(String),
+            age: expect.any(Number),
+            id: expect.any(String),
+          },
+        ]);
+      });
   });
 });
